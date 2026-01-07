@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\LocaleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,7 +21,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('users', UserController::class);
 });
+
+Route::get('locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
 require __DIR__ . '/auth.php';
