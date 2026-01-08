@@ -19,8 +19,12 @@ class RoleSeeder extends Seeder
                 'description' => 'Administrator with full access',
             ],
             [
-                'name' => 'user',
-                'description' => 'Regular user with limited access',
+                'name' => 'writer',
+                'description' => 'Content writer who can create and manage posts',
+            ],
+            [
+                'name' => 'reader',
+                'description' => 'Reader who can comment and like posts',
             ],
         ];
 
